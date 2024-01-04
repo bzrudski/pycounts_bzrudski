@@ -2,7 +2,7 @@
 
 Calculate word counts in a text file!
 
-This repository is based on the tutorial presented in the [Py-Pkgs tutorial](https://py-pkgs.org/welcome).
+This repository is based on the tutorial presented in the [Py-Pkgs tutorial](https://py-pkgs.org/welcome). Due to slight differences in the versions of available packages, some of the code is a bit different.
 
 ## Installation
 
