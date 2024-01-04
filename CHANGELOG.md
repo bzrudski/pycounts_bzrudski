@@ -2,6 +2,31 @@
 
 
 
+## v0.3.0 (2024-01-04)
+
+### Build
+
+* build: add CI workflow ([`fcfed9c`](https://github.com/bzrudski/pycounts_bzrudski/commit/fcfed9ca0c9790dd2b4f1f825890bf505a3761c5))
+
+### Documentation
+
+* docs: explain differences from tutorial ([`2a43287`](https://github.com/bzrudski/pycounts_bzrudski/commit/2a432873112e322a86233dd8f771ac6801990251))
+
+* docs: Add deprecation notice to flatland function ([`bb12a3c`](https://github.com/bzrudski/pycounts_bzrudski/commit/bb12a3c1f837b189d5a4739b6de1dce7b472f5ad))
+
+* docs: add reference to the tutorial ([`035e9bb`](https://github.com/bzrudski/pycounts_bzrudski/commit/035e9bb76b204995933b20db2beba5e995a1c955))
+
+### Feature
+
+* feat: add CI/CD workflow ([`f311e61`](https://github.com/bzrudski/pycounts_bzrudski/commit/f311e611c113afcc0c1e1031dc0cefe2f74dd727))
+
+### Fix
+
+* fix: add git log depth and update python setup version ([`6fb8500`](https://github.com/bzrudski/pycounts_bzrudski/commit/6fb8500203cb5235142a5217f41c7f9cf43cf6ab))
+
+* fix: change command for semantic release ([`dea4084`](https://github.com/bzrudski/pycounts_bzrudski/commit/dea408474041437d496de848e4a50784e0ea4855))
+
+
 ## v0.2.1 (2024-01-04)
 
 ### Fix
