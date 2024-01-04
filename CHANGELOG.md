@@ -2,6 +2,13 @@
 
 
 
+## v0.2.1 (2024-01-04)
+
+### Fix
+
+* fix: update PSR settings to auto increment version ([`bd4318c`](https://github.com/bzrudski/pycounts_bzrudski/commit/bd4318c8132dde9edf653aae9ff373c0dfaea22d))
+
+
 ## v0.2.0 (2024-01-04)
 
 ### Build
