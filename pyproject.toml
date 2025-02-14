@@ -31,8 +31,8 @@ version_toml = [
 ]
 branch = "main" # branch to make releases of
 # changelog_file = "CHANGELOG.md" # changelog file -- It already finds it
-build_command = "poetry build" # build dists
-# dist_path = "dist/" # where to put dists -- I think this may also already be covered...
+build_command = "pip install poetry && poetry build" # build dists
+dist_path = "dist/" # where to put dists -- I think this may also already be covered...
 upload_to_release = true # auto-create GitHub release - Already does it
 upload_to_pypi = false # don't auto-upload to pypi
 remove_dist = false # don't remove dists
