@@ -31,32 +31,31 @@ jobs:
             files: ./coverage.xml # Coverage report
 
       - name: Get existing documentation
-        uses: actions/download-artifact@v4
-        id: artifact_download
+        uses: actions/cache/restore@v4
+        id: cache-docs-restore
         with:
-          name: documentation-artifact
-          path: docs/
-          github-token: ${{ secrets.GITHUB_TOKEN }}
+          key: ${{ runner.os }}-docs
+          path: _build.tar.gz
 
-      - name: Unzip artifact
+      - name: Unzip cache
+        if: steps.cache-docs-restore.cache-hit == 'true'
         run: |
           mkdir docs/_build
-          tar -xvf docs/documentation-artifact.tar -C docs/_build
-          rm docs/documentation-artifact.tar
+          tar -xvf _build.tar.gz -C docs/_build
+          rm _build.tar.gz
 
       - name: Build documentation
         run: poetry run make html --directory docs/
 
-      - name: Create new artifact
-        run: tar -cvf docs/documentation-artifact.tar docs/_build
+      - name: Create new cache
+        run: tar -czvf _build.tar.gz docs/_build
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        id: artifact_upload
+        uses: actions/cache/save@v4
+        id: cache-docs-save
         with:
-          name: documentation-artifact
-          path: docs/documentation-artifact.tar
-          overwrite: true
+          path: _build.tar.gz
+          key: ${{ runner.os }}-docs
 
   cd:
     permissions:
