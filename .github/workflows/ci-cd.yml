@@ -30,8 +30,34 @@ jobs:
         with:
             files: ./coverage.xml # Coverage report
 
+      - name: Get existing documentation
+        uses: actions/download-artifact@v4
+        id: artifact_download
+        with:
+          name: documentation-artifact
+          path: docs/
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Unzip artifact
+        if: steps.artifact_download.download-path != null
+        run: |
+          mkdir docs/_build
+          tar -xvf docs/documentation-artifact.tar -C docs/_build
+          rm docs/documentation-artifact.tar
+
       - name: Build documentation
         run: poetry run make html --directory docs/
+
+      - name: Create new artifact
+        run: tar -cvf docs/documentation-artifact.tar docs/_build
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        id: artifact_upload
+        with:
+          name: documentation-artifact
+          path: docs/documentation-artifact.tar
+          overwrite: true
 
   cd:
     permissions:
