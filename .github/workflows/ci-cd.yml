@@ -34,7 +34,7 @@ jobs:
         uses: actions/cache/restore@v4
         id: cache-docs-restore
         with:
-          key: ${{ steps.cache-docs-restore.outputs.cache-primary-key }}
+          key: ${{ runner.os }}-docs
           path: _build.tar.gz
 
       - name: Unzip cache
@@ -55,7 +55,7 @@ jobs:
         id: cache-docs-save
         with:
           path: _build.tar.gz
-          key: ${{ runner.os }}-docs
+          key: ${{ steps.cache-docs-restore.outputs.cache-primary-key }}
 
   cd:
     permissions:
