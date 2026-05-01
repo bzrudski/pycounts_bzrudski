@@ -31,13 +31,6 @@ jobs:
             files: ./coverage.xml # Coverage report
             token: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/codecov-action@v5
-        with:
-          report_type: test_results
-          token: ${{ secrets.CODECOV_TOKEN }}
-
       - name: Get existing documentation
         uses: actions/cache/restore@v4
         id: cache-docs-restore
