@@ -8,10 +8,10 @@ jobs:
 
     # Define job steps
     steps:
-      - name: Set up Python 3.9
+      - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
-            python-version: 3.9
+            python-version: 3.10
 
       - name: Check-out repository
         uses: actions/checkout@v3
@@ -26,9 +26,16 @@ jobs:
         run: poetry run pytest tests/ --cov=pycounts_bzrudski --cov-report=xml
 
       - name: Use Codecov to track coverage
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v5.4.2
         with:
             files: ./coverage.xml # Coverage report
+            token: ${{ secrets.CODECOV_TOKEN }}
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Get existing documentation
         uses: actions/cache/restore@v4
@@ -73,10 +80,10 @@ jobs:
 
     # Define job steps
     steps:
-      - name: Set up Python 3.9
+      - name: Set up Python 3.10
         uses: actions/setup-python@v5
         with:
-            python-version: 3.9
+            python-version: 3.10
 
       - name: Check-out repository
         uses: actions/checkout@v3
