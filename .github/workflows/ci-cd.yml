@@ -8,13 +8,13 @@ jobs:
 
     # Define job steps
     steps:
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-            python-version: "3.10"
+            python-version: "3.12"
 
       - name: Check-out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
 
       - name: Install poetry
         uses: snok/install-poetry@v1
@@ -26,13 +26,13 @@ jobs:
         run: poetry run pytest tests/ --cov=pycounts_bzrudski --cov-report=xml
 
       - name: Use Codecov to track coverage
-        uses: codecov/codecov-action@v5
+        uses: codecov/codecov-action@v7
         with:
             files: ./coverage.xml # Coverage report
             token: ${{ secrets.CODECOV_TOKEN }}
 
       - name: Get existing documentation
-        uses: actions/cache/restore@v4
+        uses: actions/cache/restore@v6
         id: cache-docs-restore
         with:
           key: ${{ runner.os }}-docs
@@ -52,7 +52,7 @@ jobs:
         run: tar -czvf _build.tar.gz docs/_build
 
       - name: Upload new cache
-        uses: actions/cache/save@v4
+        uses: actions/cache/save@v6
         id: cache-docs-save
         with:
           path: _build.tar.gz
@@ -74,13 +74,13 @@ jobs:
 
     # Define job steps
     steps:
-      - name: Set up Python 3.10
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v7
         with:
-            python-version: "3.10"
+            python-version: "3.12"
 
       - name: Check-out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v7
         with:
             fetch-depth: 0
 
